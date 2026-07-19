@@ -23,7 +23,9 @@ Ensemble machine learning models predicting corporate bankruptcy on the Taiwan E
 
 ## Demo
 
-`app.py` is a Streamlit app: adjust the 10 most influential financial ratios (sliders, defaulting to the training set's median), the rest default to their median, and it returns a bankruptcy-risk flag with predicted probability.
+**Live**: [bankruptwtch.streamlit.app](https://bankruptwtch.streamlit.app/) — adjust the 10 most influential financial ratios (sliders, defaulting to the training set's median), the rest default to their median, and it returns a bankruptcy-risk flag with predicted probability.
+
+Run it locally:
 
 ```bash
 pip install -r requirements.txt
