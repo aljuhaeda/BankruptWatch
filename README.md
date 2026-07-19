@@ -1,134 +1,81 @@
-# BankruptWatch: A Machine Learning Approach to Bankruptcy Prediction
+# BankruptWatch — Corporate Bankruptcy Prediction
 
-BankruptWatch is a project focused on predicting the likelihood of bankruptcy for companies based on the dataset obtained from the **Taiwan Economic Journal** spanning from **1999 to 2009**. The determination of a company's bankruptcy status is influenced by business regulations issued by the **Taiwan Stock Exchange**.
+Ensemble machine learning models predicting corporate bankruptcy on the Taiwan Economic Journal (TEJ) financial dataset, addressing class imbalance with SMOTE and comparing Random Forest against AdaBoost.
+
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.x-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## Overview
+
+**Problem.** Predicting corporate bankruptcy from financial ratios is a heavily imbalanced classification task — bankrupt firms are the minority class, which naive classifiers ignore in favor of the majority.
+
+**Approach.**
+
+1. Cleaned and profiled the TEJ dataset (Taiwan-listed companies, 1999–2009).
+2. Balanced the training set with **SMOTE** (Synthetic Minority Over-sampling).
+3. Trained and compared two ensemble classifiers: **Random Forest** and **AdaBoost**.
+4. Ranked driving financial ratios via feature importance to make results business-interpretable.
+
+**Result.** Best model reaches **92% accuracy** on the held-out test set.
+
+## Tech Stack
+
+- **Python**, **Jupyter Notebook**
+- **scikit-learn** — RandomForestClassifier, AdaBoostClassifier, train/test split, metrics
+- **imbalanced-learn** — SMOTE
+- **pandas / NumPy** — data handling
+- **Matplotlib / seaborn** — EDA and feature-importance plots
 
 ## Dataset
 
-The dataset used in this project is sourced from [Kaggle](https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction?datasetId=1111894&sortBy=voteCount). It provides valuable information for training and evaluating the bankruptcy prediction models.
-
-## Machine Learning Techniques
-
-In this project, the focus is on implementing oversampling techniques with SMOTE (Synthetic Minority Over-sampling Technique). The primary goal is to address imbalances in the dataset, particularly in the context of predicting bankruptcy where positive cases might be underrepresented.
-
-## Predictive Models
-
-The project includes the comparison of two powerful ensemble learning algorithms:
-
-- **AdaBoost**: An adaptive boosting algorithm that combines weak classifiers to create a strong classifier.
-
-- **Random Forest**: A robust ensemble method that constructs a multitude of decision trees and merges them together.
+Source: [Company Bankruptcy Prediction — Kaggle](https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction), originally from the **Taiwan Economic Journal**, covering listed companies from 1999–2009. The dataset contains 95 financial ratios per company and a binary bankruptcy label defined by Taiwan Stock Exchange regulations.
 
 ## Project Structure
 
 ```
-BankruptcyPrediction/
-│
+BankruptWatch/
 ├── dataset/
-│   ├── [Dataset files]
-│
+│   └── data.csv                          # TEJ financial ratios
 ├── notebooks/
-│   ├── Bankruptcy_Prediction.ipynb
-│
+│   └── Bankruptcy_Prediction.ipynb       # EDA, SMOTE, RF vs AdaBoost
+├── LICENSE
 └── README.md
 ```
 
-- **`dataset/`**: Directory containing the dataset files.
-
-- **`notebooks/`**: Directory containing Jupyter Notebook(s) for the Bankruptcy Prediction project.
-
 ## Getting Started
 
-1. **Clone the Repository:**
+**1. Clone the repo**
 
-   ```bash
-   git clone https://github.com/your-username/BankruptcyPrediction.git
-   ```
+```bash
+git clone https://github.com/aljuhaeda/BankruptWatch.git
+cd BankruptWatch
+```
 
-2. **Navigate to the Project Directory:**
+**2. Install dependencies**
 
-   ```bash
-   cd BankruptcyPrediction
-   ```
+```bash
+pip install pandas numpy scikit-learn imbalanced-learn matplotlib seaborn jupyter
+```
 
-3. **Open the Jupyter Notebook:**
+**3. Open the notebook**
 
-   Open `notebooks/Bankruptcy_Prediction.ipynb` in a Jupyter environment to explore the code, conduct analysis, and view the comparison of AdaBoost and Random Forest models.
+```bash
+jupyter notebook notebooks/Bankruptcy_Prediction.ipynb
+```
 
-## Usage
+Run all cells to reproduce the EDA, SMOTE balancing, model training, and Random Forest vs. AdaBoost comparison.
 
-- Run the Jupyter Notebook cells to execute the analysis and compare the performance of AdaBoost and Random Forest models in predicting bankruptcy.
+## Key Findings
 
-## Contributing
-
-Feel free to contribute to the project. If you have suggestions, improvements, or found a bug, please open an issue or create a pull request.
+- Class imbalance in the raw data is severe (~3% bankruptcy rate). Without SMOTE, both models over-predict the majority class.
+- After SMOTE, **Random Forest** achieved the highest accuracy at 92%.
+- Feature importance highlights ratios tied to **debt-to-equity**, **retained earnings**, and **operating cash flow** as the strongest bankruptcy predictors — consistent with corporate-finance theory.
 
 ## License
 
-Bankruptcy Prediction is licensed under the [MIT License](LICENSE).
+MIT. See [LICENSE](LICENSE).
 
----
+## Author
 
-Copy and paste this template into your README.md file on GitHub. Customize it with any additional details or instructions specific to your project. Don't forget to upload the dataset files to the `dataset/` directory before pushing to your repository.
-## Dataset
-
-The dataset used in this project is sourced from [Kaggle](https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction?datasetId=1111894&sortBy=voteCount). It provides valuable information for training and evaluating the bankruptcy prediction models.
-
-## Machine Learning Techniques
-
-In this project, the focus is on implementing oversampling techniques with SMOTE (Synthetic Minority Over-sampling Technique). The primary goal is to address imbalances in the dataset, particularly in the context of predicting bankruptcy where positive cases might be underrepresented.
-
-## Predictive Models
-
-The project includes the comparison of two powerful ensemble learning algorithms:
-
-- **AdaBoost**: An adaptive boosting algorithm that combines weak classifiers to create a strong classifier.
-
-- **Random Forest**: A robust ensemble method that constructs a multitude of decision trees and merges them together.
-
-## Project Structure
-
-```
-BankruptcyPrediction/
-│
-├── dataset/
-│   ├── [Dataset files]
-│
-├── notebooks/
-│   ├── Bankruptcy_Prediction.ipynb
-│
-└── README.md
-```
-
-- **`dataset/`**: Directory containing the dataset files.
-
-- **`notebooks/`**: Directory containing Jupyter Notebook(s) for the Bankruptcy Prediction project.
-
-## Getting Started
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/your-username/BankruptcyPrediction.git
-   ```
-
-2. **Navigate to the Project Directory:**
-
-   ```bash
-   cd BankruptcyPrediction
-   ```
-
-3. **Open the Jupyter Notebook:**
-
-   Open `notebooks/Bankruptcy_Prediction.ipynb` in a Jupyter environment to explore the code, conduct analysis, and view the comparison of AdaBoost and Random Forest models.
-
-## Usage
-
-- Run the Jupyter Notebook cells to execute the analysis and compare the performance of AdaBoost and Random Forest models in predicting bankruptcy.
-
-## Contributing
-
-Feel free to contribute to the project. If you have suggestions, improvements, or found a bug, please open an issue or create a pull request.
-
-## License
-
-Bankruptcy Prediction is licensed under the [MIT License](LICENSE).
+**Zul Iflah Al Juhaeda** — [LinkedIn](https://linkedin.com/in/aljuhaeda) · [GitHub](https://github.com/aljuhaeda)
