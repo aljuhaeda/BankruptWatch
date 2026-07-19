@@ -1,0 +1,53 @@
+{
+  "baseline_accuracy": 0.967741935483871,
+  "n_train": 5455,
+  "n_test": 1364,
+  "n_bankrupt_test": 44,
+  "best_model": "RandomForest",
+  "results": {
+    "RandomForest": {
+      "accuracy": 0.9589442815249267,
+      "precision_bankrupt": 0.4032258064516129,
+      "recall_bankrupt": 0.5681818181818182,
+      "f1_bankrupt": 0.4716981132075472,
+      "confusion_matrix": [
+        [
+          1283,
+          37
+        ],
+        [
+          19,
+          25
+        ]
+      ]
+    },
+    "AdaBoost": {
+      "accuracy": 0.9222873900293255,
+      "precision_bankrupt": 0.23728813559322035,
+      "recall_bankrupt": 0.6363636363636364,
+      "f1_bankrupt": 0.345679012345679,
+      "confusion_matrix": [
+        [
+          1230,
+          90
+        ],
+        [
+          16,
+          28
+        ]
+      ]
+    }
+  },
+  "top_features": {
+    "Borrowing dependency": 0.08306371347976477,
+    "Net Income to Total Assets": 0.04932317285704556,
+    "Persistent EPS in the Last Four Seasons": 0.04438794373169823,
+    "After-tax net Interest Rate": 0.043246141232985036,
+    "Liability to Equity": 0.03778541836488886,
+    "Debt ratio %": 0.035164449208778606,
+    "Continuous interest rate (after tax)": 0.033168803882781796,
+    "Net worth/Assets": 0.03143707786446099,
+    "Total income/Total expense": 0.026571256098688937,
+    "Retained Earnings to Total Assets": 0.025910650986532505
+  }
+}
