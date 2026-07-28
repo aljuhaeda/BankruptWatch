@@ -32,7 +32,9 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
   company's trajectory, only a snapshot.
 - 40.3% precision means most flags are false alarms — appropriate only
   as a low-cost screening signal, not for automated decisions.
-- Free-tier Streamlit hosting sleeps after inactivity (cold start ~20-30s).
+- Free-tier Streamlit hosting sleeps after inactivity. Cold start is
+  slower than previously documented — a live re-check (2026-07-29) was
+  still mid-boot past 60-85s, not the ~20-30s this used to say.
 
 ## Verification log
 - 2026-07-23: git working tree clean, no pending diff. `/security-review`
