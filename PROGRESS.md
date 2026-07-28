@@ -14,8 +14,8 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
   original version reported only accuracy on a 97/3 imbalanced test set,
   which hid that the model may have caught zero real bankruptcies.
 - Real, honest result: Random Forest catches 57% of actual bankruptcies
-  (vs. 0% for a naive baseline), documented alongside its 34.8% precision
-  (roughly 2 in 3 flags are false alarms) rather than hiding the trade-off.
+  (vs. 0% for a naive baseline), documented alongside its 40.3% precision
+  (roughly 3 in 5 flags are false alarms) rather than hiding the trade-off.
 - Fixed: notebook Kaggle-only path dependency, missing `pandas` import,
   a `matplotlib` API rename that broke an EDA plot.
 - Interactive Streamlit demo with slider inputs for the 10 most
@@ -30,7 +30,7 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
   uncertainty in the precision/recall estimates at this sample size.
 - Static financial ratios only, no time-series trend data — can't see a
   company's trajectory, only a snapshot.
-- 34.8% precision means most flags are false alarms — appropriate only
+- 40.3% precision means most flags are false alarms — appropriate only
   as a low-cost screening signal, not for automated decisions.
 - Free-tier Streamlit hosting sleeps after inactivity (cold start ~20-30s).
 

@@ -131,7 +131,7 @@ The notebook, `train.py`, and this README now reflect a pipeline that splits bef
 ## Limitations
 
 - **Small positive class** (44 bankrupt companies in the test set) — precision/recall estimates have real uncertainty at this sample size.
-- **34.8% precision** means roughly 2 in 3 bankruptcy flags are false alarms — appropriate for a low-cost screening tool, not for automated decisions.
+- **40.3% precision** means roughly 3 in 5 bankruptcy flags are false alarms — appropriate for a low-cost screening tool, not for automated decisions.
 - **Static financial ratios only**, no time-series trend data — the model can't see a company's trajectory, only a snapshot.
 - Not a financial advisory tool; see the in-app disclaimer.
 
