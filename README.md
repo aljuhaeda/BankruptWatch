@@ -7,6 +7,8 @@ Ensemble machine learning models predicting corporate bankruptcy on the Taiwan E
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![App screenshot](docs/app-screenshot.png)
+
 ## Overview
 
 **Problem.** Predicting corporate bankruptcy from financial ratios is a heavily imbalanced classification task — only ~3% of companies in the dataset are bankrupt. A model that never predicts bankruptcy still scores ~97% accuracy while catching zero real cases, which makes accuracy alone a misleading headline number here.
