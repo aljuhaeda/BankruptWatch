@@ -41,6 +41,9 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
   skill checked — N/A, diff-based and nothing to review. Live demo woken
   from sleep; slider-widget JS and all core assets loaded 200, no
   console errors.
+- 2026-08-11: reviewed commits since last check (README screenshot,
+  `.devcontainer/devcontainer.json` added) — dev tooling only, no app
+  code changed, status unaffected.
 
 ## Next up
 - Nothing scheduled.
