@@ -44,6 +44,36 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
 - 2026-08-11: reviewed commits since last check (README screenshot,
   `.devcontainer/devcontainer.json` added) — dev tooling only, no app
   code changed, status unaffected.
+- 2026-11-03 (metrics re-reproduced from code on 2026-11-03): ran
+  `train.py`'s exact pipeline as a scratch script (`train.py` itself not
+  executed because it overwrites `model/`), repo `.venv` = Python 3.14.7,
+  scikit-learn 1.9.0, imbalanced-learn 0.14.2. Data:
+  `dataset/BankruptData.csv`, 6,819 rows. Split: stratified
+  `train_test_split(test_size=0.2, random_state=42)`, giving 5,455 train
+  and 1,364 test rows (44 bankrupt); `StandardScaler` and
+  `SMOTE(random_state=42)` fit on the train fold only. **Result matches
+  README/app/`results.json` exactly:** baseline 0.9677; Random Forest
+  acc 0.9589, bankrupt precision 0.4032, recall 0.5682, F1 0.4717,
+  CM [[1283, 37], [19, 25]]; AdaBoost 0.9223 / 0.2373 / 0.6364 / 0.3457,
+  CM [[1230, 90], [16, 28]]. The committed `model.pkl` + `scaler.pkl`
+  on the same test split give the identical RF numbers. Re-running the
+  notebook's `GridSearchCV(cv=5)` picks the same hyperparameters
+  (RF `n_estimators=200, max_depth=None`; AdaBoost `n_estimators=200,
+  learning_rate=1.0`).
+  - **Leak check.** Scaler and SMOTE are fit after the split, train only:
+    clean. There are 0 duplicate rows and 0 test feature vectors that
+    also appear in train. There's no date column, so the time-ordered
+    split pattern can't be checked. Two mild issues remain. (1)
+    `train.py` picks the deployed model (RF vs AdaBoost) by **test-set**
+    F1 (`best_name`), so the test set does double duty for a
+    2-candidate choice. (2) The notebook runs SMOTE *before*
+    `GridSearchCV`, so the CV folds contain synthetic points derived from
+    their own validation rows. That inflates the CV scores (RF 0.9807,
+    AdaBoost 0.9432) and affects only which hyperparameters get picked,
+    not the reported test numbers. The notebook's legacy cells 30/35/38
+    still fit SMOTE, SelectKBest and the scaler on the full data before
+    the split, but nothing downstream uses them for the reported metrics.
+  - Nothing claimed was left unverified.
 
 ## Next up
 - Nothing scheduled.
