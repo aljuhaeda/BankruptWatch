@@ -76,4 +76,5 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
   - Nothing claimed was left unverified.
 
 ## Next up
+- `requirements.txt` pins (2026-11-03) are committed locally, not pushed: numpy 2.5.1 needs Python 3.12+; pandas/scikit-learn/matplotlib pins need 3.11+. Check the app's Python setting in Streamlit Cloud, then push and confirm the app boots.
 - Nothing scheduled.
