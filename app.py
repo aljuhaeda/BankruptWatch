@@ -22,7 +22,7 @@ def load_artifacts():
 model, scaler, feature_names, feature_medians = load_artifacts()
 
 # The 10 features the model weighs most heavily (see model/results.json).
-# Everything else defaults to its training-set median -- 96 financial
+# Everything else defaults to its training-set median -- 95 financial
 # ratios is not a reasonable form to hand anyone.
 TOP_FEATURES = [
     "Borrowing dependency",
@@ -56,8 +56,8 @@ st.warning(
 st.subheader("Key Financial Ratios")
 st.caption(
     "Sliders default to the training dataset's median value for each ratio. With the other 85 ratios "
-    "held at their median, slider settings tried in testing stayed below the flag threshold (highest "
-    "probability about 42%), so use them to see how the probability moves, not to reproduce a flag."
+    "held at their median, no slider setting reaches the flag threshold (the highest possible is 42%), "
+    "so use them to see how the probability moves, not to reproduce a flag."
 )
 
 inputs = {}

@@ -15,7 +15,7 @@ Ensemble machine learning models predicting corporate bankruptcy on the Taiwan E
 
 **Approach.**
 
-1. Cleaned and profiled the TEJ dataset (6,819 Taiwan-listed companies, 1999–2009, 96 financial ratios).
+1. Cleaned and profiled the TEJ dataset (6,819 Taiwan-listed companies, 1999–2009, 95 financial ratios).
 2. Split into train/test **before** any resampling or scaling, so the test set stays an untouched sample of the real ~97/3 class distribution.
 3. Applied **SMOTE** to the training fold only, then trained and grid-search-tuned two ensemble classifiers: **Random Forest** and **AdaBoost**.
 4. Evaluated with precision/recall/F1 on the bankrupt class and a confusion matrix — not just accuracy — since accuracy alone can't tell you whether the model actually catches bankruptcies.
@@ -25,7 +25,7 @@ Ensemble machine learning models predicting corporate bankruptcy on the Taiwan E
 
 ## Demo
 
-**Live**: [bankruptwtch.streamlit.app](https://bankruptwtch.streamlit.app/) — adjust the 10 most influential financial ratios (sliders, defaulting to the training set's median), the rest default to their median, and it returns a predicted probability. With 85 ratios held at median, slider settings tried in testing stayed below the flag threshold (highest about 42%), so the demo shows how the probability moves rather than reproducing the recall figures below, which use all 95 ratios.
+**Live**: [bankruptwtch.streamlit.app](https://bankruptwtch.streamlit.app/) — adjust the 10 most influential financial ratios (sliders, defaulting to the training set's median), the rest default to their median, and it returns a predicted probability. With 85 ratios held at median, no slider setting reaches the flag threshold (the highest possible is 42%), so the demo shows how the probability moves rather than reproducing the recall figures below, which use all 95 ratios.
 
 Run it locally:
 
@@ -61,7 +61,7 @@ Top predictive features (Random Forest importance): **Borrowing dependency**, **
 
 ## Dataset
 
-Source: [Company Bankruptcy Prediction — Kaggle](https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction), originally from the **Taiwan Economic Journal**, covering listed companies from 1999–2009. 96 financial ratios per company (95 features + label) and a binary bankruptcy label defined by Taiwan Stock Exchange regulations.
+Source: [Company Bankruptcy Prediction — Kaggle](https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction), originally from the **Taiwan Economic Journal**, covering listed companies from 1999–2009. 95 financial ratios per company and a binary bankruptcy label defined by Taiwan Stock Exchange regulations.
 
 ## Project Structure
 
