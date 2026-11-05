@@ -26,6 +26,7 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
 - Nothing currently active.
 
 ## Known issues / honest limitations
+- **The live demo cannot show a bankruptcy flag (found 2026-11-05, in `app.py` since it was added).** The app holds 85 of the 95 ratios at their median, and with those fixed the model stayed under 0.5. Run locally on `model/`: 20,000 random slider settings peaked at 0.415, none flagged; the 220 real bankrupt companies with their own 10 slider values peaked under 0.5 (median 0.31), none flagged; all sliders at their worst values gave 0.40. The same model on all 95 real ratios does flag (test recall 56.8%, precision 40.3%, both reproduced), so the reported metrics hold, but the in-app line "catches roughly 6 out of 10" and the README's "returns a bankruptcy-risk flag" describe something a visitor cannot reproduce with the sliders. Random search, not a proof that no setting flags.
 - Small positive class in the test set (44 bankrupt companies) — real
   uncertainty in the precision/recall estimates at this sample size.
 - Static financial ratios only, no time-series trend data — can't see a
@@ -76,5 +77,6 @@ Community Cloud free tier — sleeps after inactivity, wakes on first visit).
   - Nothing claimed was left unverified.
 
 ## Next up
-- `requirements.txt` pins (2026-11-03) are committed locally, not pushed: numpy 2.5.1 needs Python 3.12+; pandas/scikit-learn/matplotlib pins need 3.11+. Check the app's Python setting in Streamlit Cloud, then push and confirm the app boots.
+- `requirements.txt` pins are live (`91e6de2`, Cloud runs Python 3.14). Checked live 2026-11-05: page renders, no exception, Predict works, and a slider drag reaches the model (Borrowing dependency = 1.00 returns 6.5%, same as the local model).
+- Decide what to do about the demo that cannot flag (see Known issues).
 - Nothing scheduled.
