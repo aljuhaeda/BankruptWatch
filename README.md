@@ -25,7 +25,7 @@ Ensemble machine learning models predicting corporate bankruptcy on the Taiwan E
 
 ## Demo
 
-**Live**: [bankruptwtch.streamlit.app](https://bankruptwtch.streamlit.app/) — adjust the 10 most influential financial ratios (sliders, defaulting to the training set's median), the rest default to their median, and it returns a bankruptcy-risk flag with predicted probability.
+**Live**: [bankruptwtch.streamlit.app](https://bankruptwtch.streamlit.app/) — adjust the 10 most influential financial ratios (sliders, defaulting to the training set's median), the rest default to their median, and it returns a predicted probability. With 85 ratios held at median, slider settings tried in testing stayed below the flag threshold (highest about 42%), so the demo shows how the probability moves rather than reproducing the recall figures below, which use all 95 ratios.
 
 Run it locally:
 

@@ -46,15 +46,19 @@ st.markdown(
 )
 
 st.warning(
-    "⚠️ This model catches roughly 6 out of 10 real bankruptcies in testing, at the cost of "
-    "a meaningful false-positive rate — see **Model Performance** below before reading too much "
+    "⚠️ Given all 95 ratios, this model catches roughly 6 out of 10 real bankruptcies in testing, "
+    "at the cost of a meaningful false-positive rate — see **Model Performance** below before reading too much "
     "into any single prediction. It's a demonstration of the modeling approach, not a financial "
     "decision tool.",
     icon="⚠️",
 )
 
 st.subheader("Key Financial Ratios")
-st.caption("Sliders default to the training dataset's median value for each ratio.")
+st.caption(
+    "Sliders default to the training dataset's median value for each ratio. With the other 85 ratios "
+    "held at their median, slider settings tried in testing stayed below the flag threshold (highest "
+    "probability about 42%), so use them to see how the probability moves, not to reproduce a flag."
+)
 
 inputs = {}
 col1, col2 = st.columns(2)
